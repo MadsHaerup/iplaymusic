@@ -1,0 +1,58 @@
+@import 'src/variables.scss';
+.login {
+	position: relative;
+	text-transform: capitalize;
+	display: grid;
+	grid-template-rows: 3fr 1fr 1fr 1fr 1fr;
+	align-items: center;
+	margin: 0 2em;
+	&__title {
+		font-size: 2em;
+		font-weight: bold;
+		margin: 1em 0 3em 0;
+		color: $primaryColor;
+	}
+	&__label {
+		font-weight: bold;
+	}
+	&__inputContainer {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 3px solid $secondaryColor;
+		padding-bottom: 0.5em;
+		input {
+			outline: none;
+			border: none;
+		}
+		&__icon {
+			font-size: 1.5em;
+		}
+	}
+	&__btn {
+		appearance: none;
+		border-radius: 3em;
+		border: 3px solid $secondaryColor;
+		padding: 1.5em 3em;
+		text-transform: uppercase;
+		margin: 2em 0 2em 0;
+		background-color: $white;
+		font-weight: 900;
+	}
+	&__fingerprint {
+		border-radius: 50%;
+		place-self: center;
+		padding: 1em;
+		border: none;
+		background-color: $primaryColor;
+		color: $white;
+		margin: 1em 0 0 0;
+	}
+	svg.login_fingerprintIcon {
+		height: 3em;
+		width: 3em;
+	}
+	&__fingerprintText {
+		font-size: 1em;
+		text-align: center;
+	}
+}
