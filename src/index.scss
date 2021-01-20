@@ -1,3 +1,12 @@
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+@import 'src/variables.scss';
+@font-face {
+	font-family: 'Poppins', sans-serif;
+	src: local('poppins'), url(./fonts/Poppins-Regular.ttf) format('truetype');
+}
+
 body {
 	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	color: $secondaryColor;
 }
