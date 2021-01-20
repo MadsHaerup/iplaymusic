@@ -1,0 +1,36 @@
+@import 'src/variables.scss';
+.featured {
+	margin: 2em;
+	display: grid;
+	&__title {
+		background: $gradientColor;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		font-size: 2em;
+	}
+}
+.featuredCard {
+	display: grid;
+	position: relative;
+	&__image {
+		grid-area: 1/1/-1/-1;
+		border-radius: 10px;
+		width: 100%;
+		background-size: cover;
+	}
+	&__title {
+		position: absolute;
+		font-weight: 900;
+		font-size: 2em;
+		top: 50%;
+		left: 5%;
+		color: $white;
+	}
+	&__description {
+		position: absolute;
+		color: $white;
+		font-size: 0.8em;
+		bottom: 12%;
+		left: 5%;
+	}
+}
