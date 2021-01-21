@@ -16,11 +16,13 @@ export default function Featured() {
 	}, []);
 
 	return (
-		<section className="featured">
-			<h1 className="featured__title">featured</h1>
-			{items.map(function (item) {
-				return <FeaturedCard key={item.title} item={item} />;
-			})}
-		</section>
+		<>
+			<section className="featured">
+				<h1 className="featured__title">featured</h1>
+				{items.map(function (item) {
+					return <FeaturedCard key={item.title} item={item} />;
+				})}
+			</section>
+		</>
 	);
 }

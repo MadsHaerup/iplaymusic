@@ -2,11 +2,12 @@
 .featured {
 	margin: 2em;
 	display: grid;
+	grid-gap: 3em;
 	&__title {
-		background: $gradientColor;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+		text-transform: capitalize;
+		@include gradientText;
 		font-size: 2em;
+		margin-bottom: -25px;
 	}
 }
 .featuredCard {

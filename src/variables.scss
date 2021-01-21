@@ -3,3 +3,10 @@ $secondaryColor: #341931;
 $additionalColor: #111625;
 $gradientColor: linear-gradient(180deg, #ee0979, #ff6a00);
 $white: #fff;
+
+/*mixins*/
+@mixin gradientText {
+	background: linear-gradient(0.25turn, #ee0979, 30%, #ff6a00);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
