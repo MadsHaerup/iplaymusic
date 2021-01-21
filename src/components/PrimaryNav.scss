@@ -1,0 +1,15 @@
+@import 'src/variables.scss';
+.primaryNav {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: $white;
+	&__ul {
+		display: grid;
+		grid-template-columns: repeat(5, auto);
+		list-style: none;
+		&__list {
+			align-self: center;
+		}
+	}
+}
