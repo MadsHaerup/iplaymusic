@@ -3,7 +3,7 @@ import SongCard from '../components/SongCard';
 import PrimaryNav from '../components/PrimaryNav';
 import './Playlist.scss';
 
-export default function Featured() {
+export default function Playlist() {
 	var [items, setItem] = useState([]);
 	useEffect(function () {
 		fetch('./songs.json')
