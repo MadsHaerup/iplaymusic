@@ -1,20 +1,24 @@
 @import 'src/variables.scss';
 .playlist {
 	display: grid;
-	margin: 2rem;
-
+	margin-bottom: 5rem;
+	&__header {
+		display: grid;
+	}
 	&__title {
 		color: $white;
-		position: relative;
-		top: 10%;
-		left: 5%;
+		margin: 4rem 0 0 2rem;
+		text-transform: capitalize;
+		font-size: 2rem;
+		grid-area: 1/1/-1/-1;
+		z-index: 10;
 	}
 	&__background {
-		position: absolute;
-		width: 100%;
+		grid-area: 1/1/-1/-1;
+		z-index: -10;
 	}
 	&__btn {
-		appearance: none;
+		@include btn;
 		border-radius: 3em;
 		border: 3px solid $primaryColor;
 		color: $primaryColor;
@@ -23,5 +27,7 @@
 		margin: 2em 0 2em 0;
 		background-color: $white;
 		font-weight: 900;
+		width: 85%;
+		place-self: center;
 	}
 }

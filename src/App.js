@@ -11,7 +11,7 @@ function App() {
 			<Welcome path="/" />
 			<Login path="/login" />
 			<Featured path="/featured" />
-			<Playlist />
+			<Playlist path="/playlist" />
 		</Router>
 	);
 }

@@ -10,3 +10,8 @@ $white: #fff;
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;
 }
+
+@mixin btn {
+	appearance: none;
+	outline: none;
+}
