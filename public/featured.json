@@ -1,0 +1,17 @@
+[
+	{
+		"bgImage": "https://picsum.photos/id/237/325/425",
+		"title": "The Greatest Showman",
+		"description": "Soundtrack"
+	},
+	{
+		"bgImage": "https://picsum.photos/id/230/325/425",
+		"title": "The Finest Showwoman",
+		"description": "Soundtrack"
+	},
+	{
+		"bgImage": "https://picsum.photos/id/240/325/425",
+		"title": "The Craziest Showboi",
+		"description": "Soundtrack"
+	}
+]
