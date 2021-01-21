@@ -3,7 +3,7 @@ import SongCard from '../components/SongCard';
 import PrimaryNav from '../components/PrimaryNav';
 import './Playlist.scss';
 
-export default function Featured() {
+export default function Playlist() {
 	var [items, setItem] = useState([]);
 	useEffect(function () {
 		fetch('./songs.json')
@@ -20,8 +20,10 @@ export default function Featured() {
 	return (
 		<>
 			<section className="playlist">
-				<img src="./img/playlist.svg" alt="" className="playlist__background" />
-				<h1 className="playlist__title">playlist</h1>
+				<div className="playlist__header">
+					<img src="./img/playlist.svg" alt="" className="playlist__background" />
+					<h1 className="playlist__title">playlists</h1>
+				</div>
 				{items.map(function (item) {
 					return <SongCard key={item.title} item={item} />;
 				})}
