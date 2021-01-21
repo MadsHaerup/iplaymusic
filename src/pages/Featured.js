@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FeaturedCard from '../components/FeaturedCard';
+import PrimaryNav from '../components/PrimaryNav';
 
 export default function Featured() {
 	var [items, setItem] = useState([]);
@@ -23,6 +24,7 @@ export default function Featured() {
 					return <FeaturedCard key={item.title} item={item} />;
 				})}
 			</section>
+			<PrimaryNav />
 		</>
 	);
 }
