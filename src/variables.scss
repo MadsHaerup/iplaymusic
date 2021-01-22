@@ -3,6 +3,8 @@ $secondaryColor: #341931;
 $additionalColor: #111625;
 $gradientColor: linear-gradient(180deg, #ee0979, #ff6a00);
 $white: #fff;
+$shadow: 0px 7px 8px 5px #c5c5c5;
+$navshadow: 0px -4px 8px 0px #c5c5c5;
 
 /*mixins*/
 @mixin gradientText {

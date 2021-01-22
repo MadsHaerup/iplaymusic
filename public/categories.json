@@ -1,0 +1,47 @@
+[
+	{
+		"category": "Alternative",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#D70060"
+	},
+	{
+		"category": "Blues",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#E54028"
+	},
+	{
+		"category": "Classical",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#F18D05"
+	},
+	{
+		"category": "Country",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#F2BC06"
+	},
+	{
+		"category": "Dance",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#5EB11C"
+	},
+	{
+		"category": "Electronic",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#3A7634"
+	},
+	{
+		"category": "Fitness & Workout",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#0ABEBE"
+	},
+	{
+		"category": "Hip-Hop/Rap",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#00A1CB"
+	},
+	{
+		"category": "Industrial",
+		"subcategory": ["Acoustic", "Rock", "Canadian", "Jazz", "Piano", "Soul", "Swamp"],
+		"color": "#115793"
+	}
+]

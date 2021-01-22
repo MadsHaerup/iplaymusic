@@ -1,28 +1,32 @@
 @import 'src/variables.scss';
 .featured {
-	margin: 2em;
+	margin: 2rem;
+	margin-bottom: 8rem;
 	display: grid;
-	grid-gap: 3em;
+	grid-gap: 3rem;
+
 	&__title {
 		text-transform: capitalize;
 		@include gradientText;
-		font-size: 2em;
+		font-size: 2rem;
 		margin-bottom: -25px;
 	}
 }
 .featuredCard {
 	display: grid;
 	position: relative;
+
 	&__image {
 		grid-area: 1/1/-1/-1;
 		border-radius: 10px;
 		width: 100%;
 		background-size: cover;
+		box-shadow: $shadow;
 	}
 	&__title {
 		position: absolute;
 		font-weight: 900;
-		font-size: 2em;
+		font-size: 2rem;
 		top: 50%;
 		left: 5%;
 		color: $white;
@@ -30,7 +34,7 @@
 	&__description {
 		position: absolute;
 		color: $white;
-		font-size: 0.8em;
+		font-size: 0.8rem;
 		bottom: 12%;
 		left: 5%;
 	}
