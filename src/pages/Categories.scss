@@ -1,0 +1,13 @@
+@import 'src/variables.scss';
+
+.categories {
+	margin: 2rem;
+	margin-bottom: 8rem;
+	display: grid;
+	grid-gap: 1rem;
+	&__title {
+		@include gradientText;
+		text-transform: capitalize;
+		font-size: 2rem;
+	}
+}
