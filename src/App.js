@@ -1,5 +1,5 @@
 import './App.scss';
-import { Router } from '@reach/router';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 import Featured from './pages/Featured';
@@ -9,11 +9,11 @@ import Categories from './pages/Categories';
 function App() {
 	return (
 		<Router>
-			<Welcome path="/" />
-			<Login path="/login" />
-			<Featured path="/featured" />
-			<Playlist path="/playlist" />
-			<Categories path="/categories" />
+			<Route path="/" exact component={Welcome} />
+			<Route path="/login" component={Login} />
+			<Route path="/featured" component={Featured} />
+			<Route path="/playlist" component={Playlist} />
+			<Route path="/categories" component={Categories} />
 		</Router>
 	);
 }
