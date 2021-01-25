@@ -17,3 +17,9 @@
 		text-transform: capitalize;
 	}
 }
+
+.secondaryNav.active {
+	background-color: $white;
+	position: fixed;
+	z-index: 100;
+}

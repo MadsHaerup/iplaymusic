@@ -17,3 +17,15 @@ const SecondaryNav = () => {
 	);
 };
 export default SecondaryNav;
+
+window.onscroll = function () {
+	navScroll();
+};
+
+function navScroll() {
+	if (document.documentElement.scrollTop > 50) {
+		document.querySelector('.secondaryNav').className = 'secondaryNav active';
+	} else {
+		document.querySelector('.secondaryNav').className = 'secondaryNav';
+	}
+}
