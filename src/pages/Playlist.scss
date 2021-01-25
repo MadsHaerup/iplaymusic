@@ -4,6 +4,9 @@
 	margin-bottom: 5rem;
 	&__header {
 		display: grid;
+		img {
+			max-width: 100%;
+		}
 	}
 	&__title {
 		color: $white;

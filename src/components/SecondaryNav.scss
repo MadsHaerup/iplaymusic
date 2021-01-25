@@ -1,0 +1,25 @@
+@import 'src/variables.scss';
+.secondaryNav {
+	display: flex;
+	justify-content: space-between;
+	background: transparent;
+	position: absolute;
+	width: 100%;
+	top: 0;
+
+	&__arrow,
+	&__search {
+		@include btn;
+		border: none;
+		background: transparent;
+	}
+	&__text {
+		text-transform: capitalize;
+	}
+}
+
+.secondaryNav.active {
+	background-color: $white;
+	position: fixed;
+	z-index: 100;
+}
