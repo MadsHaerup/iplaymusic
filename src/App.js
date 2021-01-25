@@ -6,6 +6,7 @@ import Featured from './pages/Featured';
 import Playlist from './pages/Playlist';
 import Categories from './pages/Categories';
 import SecondaryNav from './components/SecondaryNav';
+import Player from './pages/Player';
 
 function App() {
 	return (
@@ -23,6 +24,10 @@ function App() {
 			<Route path="/categories">
 				<SecondaryNav />
 				<Categories />
+			</Route>
+			<Route path="/playing">
+				<SecondaryNav />
+				<Player />
 			</Route>
 		</Router>
 	);
