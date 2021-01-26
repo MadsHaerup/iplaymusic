@@ -1,15 +1,35 @@
 @import 'src/variables.scss';
 
 .categoryCard {
-	display: flex;
-	justify-content: space-between;
-	place-items: center;
-	border-radius: 10px;
-	box-shadow: $shadow;
 	&__category {
+		@include btn;
+		border-radius: 10px;
+		box-shadow: $shadow;
 		color: $white;
 		font-weight: bold;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+	}
+	&__title {
+		margin-left: 0.5rem;
+	}
+	&__sub {
 		margin-left: 1rem;
+		margin-right: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&__btn {
+			@include btn;
+			border: none;
+			background: none;
+		}
 	}
 	&__btn {
 		@include btn;
