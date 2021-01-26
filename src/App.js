@@ -7,6 +7,7 @@ import Playlist from './pages/Playlist';
 import Categories from './pages/Categories';
 import SecondaryNav from './components/SecondaryNav';
 import Player from './pages/Player';
+import AlbumDetails from './pages/AlbumDetails';
 
 function App() {
 	return (
@@ -28,6 +29,10 @@ function App() {
 			<Route path="/playing">
 				<SecondaryNav />
 				<Player />
+			</Route>
+			<Route path="/album">
+				<SecondaryNav />
+				<AlbumDetails />
 			</Route>
 		</Router>
 	);

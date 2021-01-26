@@ -1,0 +1,8 @@
+@import 'src/variables.scss';
+
+.playPause {
+	background: linear-gradient(80deg, #ee0979, #ff6a00);
+	@include btn;
+	border: none;
+	border-radius: 50%;
+}

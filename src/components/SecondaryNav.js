@@ -6,7 +6,7 @@ const SecondaryNav = () => {
 	let location = useLocation();
 	return (
 		<div className="secondaryNav">
-			<button className="secondaryNav__arrow">
+			<button className="secondaryNav__arrow" onClick={() => window.history.back()}>
 				<IoIosArrowBack />
 			</button>
 			<p className="secondaryNav__text">{location.pathname.slice(1)}</p>

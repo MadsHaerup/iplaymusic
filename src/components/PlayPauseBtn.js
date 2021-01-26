@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsFillPauseFill } from 'react-icons/bs';
 import { FaPlay } from 'react-icons/fa';
+import './PlayPauseBtn.scss';
 
 class PlayPause extends React.Component {
 	constructor(props) {
@@ -19,7 +20,7 @@ class PlayPause extends React.Component {
 
 	render() {
 		return (
-			<button onClick={this.handleClick}>
+			<button onClick={this.handleClick} className="playPause">
 				{this.state.isToggleOn ? <FaPlay style={{ color: 'white' }} /> : <BsFillPauseFill style={{ color: 'white' }} />}
 			</button>
 		);
