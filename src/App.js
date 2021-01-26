@@ -8,6 +8,7 @@ import Categories from './pages/Categories';
 import SecondaryNav from './components/SecondaryNav';
 import Player from './pages/Player';
 import AlbumDetails from './pages/AlbumDetails';
+import SecNav from './components/SecNav';
 
 function App() {
 	return (
@@ -31,7 +32,7 @@ function App() {
 				<Player />
 			</Route>
 			<Route path="/album">
-				<SecondaryNav />
+				<SecNav />
 				<AlbumDetails />
 			</Route>
 		</Router>

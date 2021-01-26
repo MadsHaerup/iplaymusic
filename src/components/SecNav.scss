@@ -1,0 +1,32 @@
+@import 'src/variables.scss';
+.secondaryNav {
+	display: grid;
+	color: $white;
+	grid-template-columns: 1fr 2fr;
+	background: transparent;
+	position: absolute;
+	width: 100%;
+	top: 0;
+
+	&__icon {
+		color: $white;
+	}
+	&__arrow {
+		@include btn;
+		border: none;
+		background: transparent;
+		justify-self: start;
+		padding-left: 1em;
+	}
+	&__text {
+		text-transform: capitalize;
+		padding-left: 1em;
+	}
+}
+
+.secondaryNav.active {
+	background-color: $white;
+	color: #000;
+	position: fixed;
+	z-index: 100;
+}
