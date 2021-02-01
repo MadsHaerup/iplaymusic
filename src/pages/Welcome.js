@@ -1,10 +1,13 @@
 import React from 'react';
 import WelcomeCard from '../components/WelcomeCard';
+import { Link } from '@reach/router';
 
 export default function Welcome() {
 	return (
 		<>
-			<WelcomeCard />
+			<Link to="/login">
+				<WelcomeCard />
+			</Link>
 		</>
 	);
 }

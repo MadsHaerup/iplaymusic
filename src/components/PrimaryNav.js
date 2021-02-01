@@ -1,3 +1,4 @@
+import { Link } from '@reach/router';
 import './PrimaryNav.scss';
 
 export default function PrimaryNav() {
@@ -5,29 +6,29 @@ export default function PrimaryNav() {
 		<nav className="primaryNav">
 			<ul className="primaryNav__ul">
 				<li className="primaryNav__ul__list">
-					<a href="#" className="primaryNav__ul__list__link">
+					<Link to="/playlists" className="primaryNav__ul__list__link">
 						<img src="./img/pulse.svg" alt="" />
-					</a>
+					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<a href="#" className="primaryNav__ul__list__link">
+					<Link to="#" className="primaryNav__ul__list__link">
 						<img src="./img/microphone.svg" alt="" />
-					</a>
+					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<a href="#" className="primaryNav__ul__list__link">
+					<Link to="#" className="primaryNav__ul__list__link">
 						<img src="./img/radar.svg" alt="" />
-					</a>
+					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<a href="#" className="primaryNav__ul__list__link">
+					<Link to="#" className="primaryNav__ul__list__link">
 						<img src="./img/contrast.svg" alt="" />
-					</a>
+					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<a href="#" className="primaryNav__ul__list__link">
+					<Link to="#" className="primaryNav__ul__list__link">
 						<img src="./img/settings.svg" alt="" />
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</nav>

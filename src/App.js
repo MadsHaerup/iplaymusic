@@ -1,41 +1,31 @@
 import './App.scss';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Router } from '@reach/router';
 import Login from './pages/Login';
 import Welcome from './pages/Welcome';
 import Featured from './pages/Featured';
 import Playlist from './pages/Playlist';
 import Categories from './pages/Categories';
-import SecondaryNav from './components/SecondaryNav';
-import Player from './pages/Player';
 import AlbumDetails from './pages/AlbumDetails';
-import SecNav from './components/SecNav';
+import TokenContext from './TokenContext';
+import { useState } from 'react';
+import Callback from './pages/Callback';
+import Player1 from './components/Player1';
 
 function App() {
+	var tokenState = useState(null);
 	return (
-		<Router>
-			<Route path="/" exact component={Welcome} />
-			<Route path="/login" component={Login} />
-			<Route path="/featured">
-				<SecondaryNav />
-				<Featured />
-			</Route>
-			<Route path="/playlist">
-				<SecondaryNav />
-				<Playlist />
-			</Route>
-			<Route path="/categories">
-				<SecondaryNav />
-				<Categories />
-			</Route>
-			<Route path="/playing">
-				<SecondaryNav />
-				<Player />
-			</Route>
-			<Route path="/album">
-				<SecNav />
-				<AlbumDetails />
-			</Route>
-		</Router>
+		<TokenContext.Provider value={tokenState}>
+			<Router>
+				<Callback path="/callback" />
+				<Welcome path="/" />
+				<Login path="/login" default />
+				<Featured path="/featured" />
+				<Playlist path="/playlists" />
+				<Categories path="/categories" />
+				<Player1 path="/playing" />
+				<AlbumDetails path="/album" />
+			</Router>
+		</TokenContext.Provider>
 	);
 }
 
