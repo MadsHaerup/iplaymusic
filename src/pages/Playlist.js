@@ -6,6 +6,7 @@ import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
 import { Link } from '@reach/router';
+import SliderCard from '../components/SliderCard';
 
 export default function Playlist(props) {
 	var [token] = useContext(TokenContext);
@@ -27,6 +28,24 @@ export default function Playlist(props) {
 		[token, setPlaylists]
 	);
 	console.log(playlists);
+
+	var [playlistID, setPlaylistID] = useState([]);
+
+	// get playlist
+	useEffect(
+		function () {
+			if (setPlaylistID)
+				axios
+					.get('https://api.spotify.com/v1/playlists/' + playlistID, {
+						headers: {
+							Authorization: 'Bearer ' + token.access_token,
+						},
+					})
+					.then(response => setPlaylistID(response.data));
+		},
+		[token, setPlaylistID]
+	);
+	console.log(playlistID);
 
 	//henter playlist med id'et
 	useEffect(
@@ -57,11 +76,18 @@ export default function Playlist(props) {
 					{playlists.map(list => (
 						<>
 							<Link to={`/playlists/${list.id}`} onClick={() => setCurrentPlaylist(list.id)}>
-								<div>
-									<img src={list.images[0].url} alt="" />
-									<p key={list.id}>{list.name}</p>
-								</div>
+								<SliderCard key={list.id} list={list} src={list.images[0].url} />
 							</Link>
+						</>
+					))}
+
+					{playlistID.map(list => (
+						<>
+							{function () {
+								setPlaylistID(list.id);
+							}}
+
+							<SliderCard key={list.id} list={list} src={list.images[0].url} />
 						</>
 					))}
 				</article>

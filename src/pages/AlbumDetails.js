@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SongCard from '../components/SongCard';
 import PrimaryNav from '../components/PrimaryNav';
 import './AlbumDetails.scss';
+import SecNav from '../components/SecNav';
 
 export default function AlbumDetails() {
 	var [items, setItem] = useState([]);
@@ -19,6 +20,7 @@ export default function AlbumDetails() {
 
 	return (
 		<>
+			<SecNav />
 			<section className="albumDetails">
 				<div className="albumDetails__header">
 					<img src="./img/albumbg.svg" alt="" className="albumDetails__background" />

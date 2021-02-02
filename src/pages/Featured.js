@@ -4,6 +4,8 @@ import PrimaryNav from '../components/PrimaryNav';
 import axios from 'axios';
 import TokenContext from '../TokenContext';
 import SecondaryNav from '../components/SecondaryNav';
+import { Link } from '@reach/router';
+import SongCard from '../components/SongCard';
 
 export default function Featured() {
 	var [token] = useContext(TokenContext);
@@ -25,6 +27,25 @@ export default function Featured() {
 	);
 	console.log(content);
 
+	var [currentPlaylist, setCurrentPlaylist] = useState(null);
+	var [tracks, setTracks] = useState({});
+
+	//henter playlist med id'et
+	useEffect(
+		function () {
+			if (currentPlaylist)
+				axios
+					.get('https://api.spotify.com/v1/playlists/' + currentPlaylist + '/tracks', {
+						headers: {
+							Authorization: 'Bearer ' + token.access_token,
+						},
+					})
+
+					.then(response => setTracks(response.data));
+		},
+		[token, setTracks, currentPlaylist]
+	);
+
 	return (
 		<>
 			<SecondaryNav />
@@ -34,8 +55,12 @@ export default function Featured() {
 				{content.playlists &&
 					content.playlists.items.map(function (item) {
 						return (
-								<FeaturedCard key={item.id} item={item} />
-						)
+							<>
+								<Link to={`/playlists/${item.id}`} onClick={() => setCurrentPlaylist(item.id)} key={item.id}>
+									<FeaturedCard key={item.id} item={item} />
+								</Link>
+							</>
+						);
 					})}
 			</section>
 			<PrimaryNav />
