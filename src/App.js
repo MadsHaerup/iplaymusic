@@ -16,14 +16,26 @@ function App() {
 	return (
 		<TokenContext.Provider value={tokenState}>
 			<Router>
-				<Callback path="/callback" />
-				<Welcome path="/" />
-				<Login path="/login" default />
-				<Featured path="/featured" />
-				<Playlist path="/playlists" />
-				<Categories path="/categories" />
-				<Player1 path="/playing" />
-				<AlbumDetails path="/album" />
+				{
+					(function (){
+						// if (tokenState[0]?.access_token)
+							return(
+								<>
+								<Callback path="/callback" />
+								<Welcome path="/" />
+								<Login path="/login" default />
+								<Featured path="/featured" />
+								<Playlist path="/playlists" />
+								<Playlist path="/playlists/:id" />
+								<Categories path="/categories" />
+								<Player1 path="/playing" />
+								<AlbumDetails path="/album" />
+								</>
+							)
+						
+
+					}())
+				}
 			</Router>
 		</TokenContext.Provider>
 	);

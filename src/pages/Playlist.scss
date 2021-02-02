@@ -33,4 +33,40 @@
 		width: 85%;
 		place-self: center;
 	}
+
+	&__slider {
+		display: flex;
+		justify-content: space-around;
+		overflow-y: scroll;
+		height: 40vh;
+		position: relative;
+		align-items: center;
+
+		a {
+			text-decoration: none;
+		}
+
+		div {
+			display: grid;
+			grid-template-rows: repeat(12, 1fr);
+			width: 45vw;
+			transform: translate(100px);
+
+			img {
+				border-radius: 10px;
+				width: 45vw;
+				height: 30vh;
+				grid-area: 1/1/-1/-1;
+			}
+			p {
+				place-self: center;
+				grid-area: 1/1/-1/-1;
+				text-align: center;
+				font-size: 1.5rem;
+				text-transform: capitalize;
+				font-weight: bold;
+				color: $primaryColor;
+			}
+		}
+	}
 }

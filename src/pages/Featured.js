@@ -4,7 +4,6 @@ import PrimaryNav from '../components/PrimaryNav';
 import axios from 'axios';
 import TokenContext from '../TokenContext';
 import SecondaryNav from '../components/SecondaryNav';
-import { Link } from '@reach/router';
 
 export default function Featured() {
 	var [token] = useContext(TokenContext);
@@ -35,12 +34,7 @@ export default function Featured() {
 				{content.playlists &&
 					content.playlists.items.map(function (item) {
 						return (
-							<>
-						
-								<FeaturedCard key={item.id} item={item} />;
-						
-
-							</>
+								<FeaturedCard key={item.id} item={item} />
 						)
 					})}
 			</section>

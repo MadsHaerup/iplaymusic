@@ -16,12 +16,12 @@ export default function Playlist(props) {
 	//gemmer alle playlist i statet setPlaylists
 	useEffect(
 		function () {
-			axios.get('https://api.spotify.com/v1/me/playlists', {
+			axios
+				.get('https://api.spotify.com/v1/me/playlists', {
 					headers: {
-						"Authorization": 'Bearer ' + token.access_token,
+						Authorization: 'Bearer ' + token.access_token,
 					},
 				})
-
 				.then(response => setPlaylists(response.data.items));
 		},
 		[token, setPlaylists]
@@ -32,9 +32,10 @@ export default function Playlist(props) {
 	useEffect(
 		function () {
 			if (currentPlaylist)
-				axios.get('https://api.spotify.com/v1/playlists' + currentPlaylist + '/tracks', {
+				axios
+					.get('https://api.spotify.com/v1/playlists/' + currentPlaylist + '/tracks', {
 						headers: {
-							"Authorization": 'Bearer ' + token.access_token,
+							Authorization: 'Bearer ' + token.access_token,
 						},
 					})
 
@@ -42,19 +43,6 @@ export default function Playlist(props) {
 		},
 		[token, setTracks, currentPlaylist]
 	);
-
-	// var [items, setItem] = useState([]);
-	// useEffect(function () {
-	// 	fetch('./songs.json')
-	// 		.then(function (response) {
-	// 			return response.json();
-	// 		})
-
-	// 		.then(function (data) {
-	// 			console.log(data);
-	// 			setItem(data);
-	// 		});
-	// }, []);
 
 	return (
 		<>
@@ -65,20 +53,27 @@ export default function Playlist(props) {
 					<h1 className="playlist__title">playlists</h1>
 				</div>
 
-				{playlists.map(list => (
-					<p key={list.id}>
-						<Link to={`/playlists/${list.id}`} onClick={() => setCurrentPlaylist(list.id)}>
-							{list.name}
-						</Link>
-					</p>
+				<article className="playlist__slider">
+					{playlists.map(list => (
+						<>
+							<Link to={`/playlists/${list.id}`} onClick={() => setCurrentPlaylist(list.id)}>
+								<div>
+									<img src={list.images[0].url} alt="" />
+									<p key={list.id}>{list.name}</p>
+								</div>
+							</Link>
+						</>
+					))}
+				</article>
+				{tracks.items?.map(({ track }) => (
+					<SongCard
+						key={track.id}
+						artist={track.artists[0].name}
+						title={track.name.slice(0, 18)}
+						duration={track.duration_ms}
+					/>
 				))}
 
-				{tracks.items?.map(({ track }) => (
-					<SongCard key={track.id} artist={track.artists[0].name} title={track.name} duration={track.duration_ms} />
-				))}
-				{/* {items.map(function (item) {
-					return <SongCard key={item.title} item={item} />;
-				})} */}
 				<button className="playlist__btn">listen all</button>
 			</section>
 			<PrimaryNav />

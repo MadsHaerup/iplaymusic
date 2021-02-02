@@ -20,7 +20,7 @@ const SecondaryNav = () => {
 			<button className="secondaryNav__arrow" onClick={() => window.history.back()}>
 				<IoIosArrowBack />
 			</button>
-			<p className="secondaryNav__text">{window.location.pathname.slice(1)}</p>
+			<p className="secondaryNav__text">{window.location.pathname.slice(1, 10)}</p>
 			<button className="secondaryNav__search">
 				<BsSearch />
 			</button>
