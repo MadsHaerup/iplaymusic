@@ -5,7 +5,6 @@ import axios from 'axios';
 import TokenContext from '../TokenContext';
 import SecondaryNav from '../components/SecondaryNav';
 import { Link } from '@reach/router';
-import SongCard from '../components/SongCard';
 
 export default function Featured() {
 	var [token] = useContext(TokenContext);

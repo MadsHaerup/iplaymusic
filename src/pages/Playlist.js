@@ -5,7 +5,7 @@ import './Playlist.scss';
 import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
-import { Link } from '@reach/router';
+import { Link, useParams } from '@reach/router';
 import SliderCard from '../components/SliderCard';
 
 export default function Playlist(props) {
@@ -13,6 +13,8 @@ export default function Playlist(props) {
 	var [tracks, setTracks] = useState({});
 	var [currentPlaylist, setCurrentPlaylist] = useState(null);
 	var [playlists, setPlaylists] = useState([]);
+
+	// ────────────────────────────────────────────────────────────────────────────────
 
 	//gemmer alle playlist i statet setPlaylists
 	useEffect(
@@ -29,23 +31,7 @@ export default function Playlist(props) {
 	);
 	console.log(playlists);
 
-	var [playlistID, setPlaylistID] = useState([]);
-
-	// get playlist
-	useEffect(
-		function () {
-			if (setPlaylistID)
-				axios
-					.get('https://api.spotify.com/v1/playlists/' + playlistID, {
-						headers: {
-							Authorization: 'Bearer ' + token.access_token,
-						},
-					})
-					.then(response => setPlaylistID(response.data));
-		},
-		[token, setPlaylistID]
-	);
-	console.log(playlistID);
+	// ────────────────────────────────────────────────────────────────────────────────
 
 	//henter playlist med id'et
 	useEffect(
@@ -62,6 +48,25 @@ export default function Playlist(props) {
 		},
 		[token, setTracks, currentPlaylist]
 	);
+	// ────────────────────────────────────────────────────────────────────────────────
+	// get playlist from Url params
+	var [playlistID, setPlaylistID] = useState([]);
+	const { id } = useParams();
+	console.log(id);
+	useEffect(
+		function () {
+			axios
+				.get(`https://api.spotify.com/v1/playlists/${id}`, {
+					headers: {
+						Authorization: 'Bearer ' + token.access_token,
+					},
+				})
+				.then(response => setPlaylistID(response.data));
+		},
+		[token, setPlaylistID, id]
+	);
+	console.log(playlistID);
+	// ────────────────────────────────────────────────────────────────────────────────
 
 	return (
 		<>
@@ -71,23 +76,16 @@ export default function Playlist(props) {
 					<img src="./img/playlist.svg" alt="" className="playlist__background" />
 					<h1 className="playlist__title">playlists</h1>
 				</div>
-
 				<article className="playlist__slider">
+					<Link to={`/playlists/${id}`} onClick={() => setCurrentPlaylist(id)}>
+						<SliderCard key={playlistID.id} list={playlistID} />
+					</Link>
+
 					{playlists.map(list => (
 						<>
 							<Link to={`/playlists/${list.id}`} onClick={() => setCurrentPlaylist(list.id)}>
 								<SliderCard key={list.id} list={list} src={list.images[0].url} />
 							</Link>
-						</>
-					))}
-
-					{playlistID.map(list => (
-						<>
-							{function () {
-								setPlaylistID(list.id);
-							}}
-
-							<SliderCard key={list.id} list={list} src={list.images[0].url} />
 						</>
 					))}
 				</article>
@@ -99,7 +97,6 @@ export default function Playlist(props) {
 						duration={track.duration_ms}
 					/>
 				))}
-
 				<button className="playlist__btn">listen all</button>
 			</section>
 			<PrimaryNav />
