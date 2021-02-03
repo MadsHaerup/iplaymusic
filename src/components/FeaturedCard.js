@@ -1,9 +1,13 @@
+import { Link, navigate } from '@reach/router';
 import './FeaturedCard.scss';
 
-export default function FeaturedCard({ item }) {
+export default function FeaturedCard({ item, id, src }) {
 	return (
-		<article className="featuredCard">
-			<img src={item.images[0].url} alt="" className="featuredCard__image" />
+		<article className="featuredCard" onClick={() => navigate(`/playlists/${id}`)}>
+			<img src={src} alt="" className="featuredCard__image" />
+			<p className="featuredCard__description">
+				<Link to={`/playlists/${id}`}>{item.description}</Link>
+			</p>
 		</article>
 	);
 }

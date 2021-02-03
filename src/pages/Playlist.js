@@ -5,13 +5,11 @@ import './Playlist.scss';
 import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
-import { Link, useParams } from '@reach/router';
 import SliderCard from '../components/SliderCard';
 
 export default function Playlist(props) {
 	var [token] = useContext(TokenContext);
 	var [tracks, setTracks] = useState({});
-	var [currentPlaylist, setCurrentPlaylist] = useState(null);
 	var [playlists, setPlaylists] = useState([]);
 
 	// ────────────────────────────────────────────────────────────────────────────────
@@ -36,9 +34,9 @@ export default function Playlist(props) {
 	//henter playlist med id'et og dens tracks
 	useEffect(
 		function () {
-			if (currentPlaylist)
+			if (props.id)
 				axios
-					.get('https://api.spotify.com/v1/playlists/' + currentPlaylist + '/tracks', {
+					.get('https://api.spotify.com/v1/playlists/' + props.id + '/tracks', {
 						headers: {
 							Authorization: 'Bearer ' + token.access_token,
 						},
@@ -46,27 +44,8 @@ export default function Playlist(props) {
 
 					.then(response => setTracks(response.data));
 		},
-		[token, setTracks, currentPlaylist]
+		[token, setTracks, props.id]
 	);
-	// ────────────────────────────────────────────────────────────────────────────────
-	//get playlist from Url params
-	var [playlistID, setPlaylistID] = useState([]);
-	const { id } = useParams();
-
-	console.log('useparams ' + id);
-	useEffect(
-		function () {
-			axios
-				.get(`https://api.spotify.com/v1/playlists/${id}`, {
-					headers: {
-						Authorization: 'Bearer ' + token.access_token,
-					},
-				})
-				.then(response => setPlaylistID(response.data));
-		},
-		[token]
-	);
-	console.log('playlistid ' + playlistID.name);
 	// ────────────────────────────────────────────────────────────────────────────────
 
 	return (
@@ -78,15 +57,9 @@ export default function Playlist(props) {
 					<h1 className="playlist__title">playlists</h1>
 				</div>
 				<article className="playlist__slider">
-					<Link to={`/playlists/${id}`} onClick={() => setCurrentPlaylist(id)}>
-						<SliderCard key={playlistID.id} list={playlistID} />
-					</Link>
-
 					{playlists.map(list => (
 						<>
-							<Link to={`/playlists/${list.id}`} onClick={() => setCurrentPlaylist(list.id)}>
-								<SliderCard key={list.id} list={list} src={list.images[0].url} />
-							</Link>
+							<SliderCard key={list.id} list={list} id={list.id} src={list.images[0].url} />
 						</>
 					))}
 				</article>
