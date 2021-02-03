@@ -26,25 +26,6 @@ export default function Featured() {
 	);
 	console.log(content);
 
-	var [currentPlaylist, setCurrentPlaylist] = useState(null);
-	var [tracks, setTracks] = useState({});
-
-	//henter playlist med id'et
-	useEffect(
-		function () {
-			if (currentPlaylist)
-				axios
-					.get('https://api.spotify.com/v1/playlists/' + currentPlaylist + '/tracks', {
-						headers: {
-							Authorization: 'Bearer ' + token.access_token,
-						},
-					})
-
-					.then(response => setTracks(response.data));
-		},
-		[token, setTracks, currentPlaylist]
-	);
-
 	return (
 		<>
 			<SecondaryNav />
@@ -55,7 +36,7 @@ export default function Featured() {
 					content.playlists.items.map(function (item) {
 						return (
 							<>
-								<Link to={`/playlists/${item.id}`} onClick={() => setCurrentPlaylist(item.id)} key={item.id}>
+								<Link to={`/playlists/${item.id}`} key={item.id}>
 									<FeaturedCard key={item.id} item={item} />
 								</Link>
 							</>

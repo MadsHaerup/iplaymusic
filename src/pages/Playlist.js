@@ -16,7 +16,7 @@ export default function Playlist(props) {
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
-	//gemmer alle playlist i statet setPlaylists
+	//gemmer alle mine playlist i statet setPlaylists
 	useEffect(
 		function () {
 			axios
@@ -33,7 +33,7 @@ export default function Playlist(props) {
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
-	//henter playlist med id'et
+	//henter playlist med id'et og dens tracks
 	useEffect(
 		function () {
 			if (currentPlaylist)
@@ -49,10 +49,11 @@ export default function Playlist(props) {
 		[token, setTracks, currentPlaylist]
 	);
 	// ────────────────────────────────────────────────────────────────────────────────
-	// get playlist from Url params
+	//get playlist from Url params
 	var [playlistID, setPlaylistID] = useState([]);
 	const { id } = useParams();
-	console.log(id);
+
+	console.log('useparams ' + id);
 	useEffect(
 		function () {
 			axios
@@ -63,9 +64,9 @@ export default function Playlist(props) {
 				})
 				.then(response => setPlaylistID(response.data));
 		},
-		[token, setPlaylistID, id]
+		[token]
 	);
-	console.log(playlistID);
+	console.log('playlistid ' + playlistID.name);
 	// ────────────────────────────────────────────────────────────────────────────────
 
 	return (
