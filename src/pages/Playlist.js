@@ -66,6 +66,7 @@ export default function Playlist(props) {
 				{tracks.items?.map(({ track }) => (
 					<SongCard
 						key={track.id}
+						id={track.id}
 						artist={track.artists[0].name}
 						title={track.name.slice(0, 18)}
 						duration={track.duration_ms}
