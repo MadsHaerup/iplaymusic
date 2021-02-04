@@ -1,7 +1,7 @@
 import { IoIosArrowBack } from 'react-icons/io';
 import './SecNav.scss';
 const SecNav = () => {
-	if (window.location.pathname === '/album') {
+	if (window.location.pathname === '/album' || '/playing') {
 		window.onscroll = function () {
 			navScroll();
 		};
@@ -23,7 +23,7 @@ const SecNav = () => {
 			<button className="secNav__arrow" onClick={() => window.history.back()}>
 				<IoIosArrowBack className="secNav__icon" />
 			</button>
-			<p className="secNav__text">{window.location.pathname.slice(1)}</p>
+			<p className="secNav__text">{window.location.pathname.slice(1, 8)}</p>
 		</div>
 	);
 };
