@@ -3,6 +3,7 @@ import PlayerCard from '../components/PlayerCard';
 import '../components/PlayerCard.scss';
 import axios from 'axios';
 import TokenContext from '../TokenContext';
+import SecNav from '../components/SecNav';
 
 export default function Playlist(props) {
 	var [token] = useContext(TokenContext);
@@ -19,20 +20,25 @@ export default function Playlist(props) {
 						},
 					})
 
-					.then(response => setTracks(response.data));
+					.then(response => {
+						console.log('player', response.data);
+						setTracks(response.data);
+					});
 		},
 		[token, setTracks, props.id]
 	);
 
 	return (
 		<>
+			<SecNav />
 			<section className="player">
 				<PlayerCard
 					key={tracks.id}
 					id={tracks.id}
 					title={tracks.name}
-					// artist={tracks.artists.name}
-					// src={tracks.images[0].url}
+					artist={tracks.artists && tracks.artists[0].name}
+					src={tracks.album && tracks.album.images[0].url}
+					// src={tracks.images ? tracks.images[0].url : ''}
 					duration={tracks.duration_ms}
 				/>
 			</section>

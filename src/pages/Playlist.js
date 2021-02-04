@@ -53,7 +53,7 @@ export default function Playlist(props) {
 			<SecondaryNav />
 			<section className="playlist">
 				<div className="playlist__header">
-					<img src="./img/playlist.svg" alt="" className="playlist__background" />
+					<img src="/img/playlist.svg" alt="" className="playlist__background" />
 					<h1 className="playlist__title">playlists</h1>
 				</div>
 				<article className="playlist__slider">
