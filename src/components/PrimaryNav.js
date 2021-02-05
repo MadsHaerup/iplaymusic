@@ -11,17 +11,17 @@ export default function PrimaryNav() {
 					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<Link to="/album" className="primaryNav__ul__list__link">
+					<Link to="/albums" className="primaryNav__ul__list__link">
 						<img src="/img/microphone.svg" alt="" />
 					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<Link to="/categories" className="primaryNav__ul__list__link">
+					<Link to="/featured" className="primaryNav__ul__list__link">
 						<img src="/img/radar.svg" alt="" />
 					</Link>
 				</li>
 				<li className="primaryNav__ul__list">
-					<Link to="#" className="primaryNav__ul__list__link">
+					<Link to="/categories" className="primaryNav__ul__list__link">
 						<img src="/img/contrast.svg" alt="" />
 					</Link>
 				</li>

@@ -10,6 +10,7 @@ import TokenContext from './TokenContext';
 import { useState } from 'react';
 import Callback from './pages/Callback';
 import Player from './pages/Player';
+import Album from './pages/Album';
 
 function App() {
 	var tokenState = useState(null);
@@ -30,6 +31,8 @@ function App() {
 							<Player path="/playing" />
 							<Player path="/playing/:id" />
 							<AlbumDetails path="/album" />
+							<Album path="/albums" />
+							<Album path="/albums/:id" />
 						</>
 					);
 				})()}
