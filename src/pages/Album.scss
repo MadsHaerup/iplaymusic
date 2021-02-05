@@ -1,5 +1,5 @@
 @import 'src/variables.scss';
-.playlist {
+.album {
 	display: grid;
 	margin-bottom: 5rem;
 	&__header {
@@ -9,7 +9,7 @@
 		}
 	}
 	&__title {
-		color: $white;
+		@include gradientText;
 		margin: 4rem 0 0 2rem;
 		text-transform: capitalize;
 		font-size: 2rem;

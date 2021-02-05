@@ -1,5 +1,5 @@
 @import 'src/variables.scss';
-.secondaryNav {
+.secNav {
 	display: grid;
 	color: $white;
 	grid-template-columns: 1fr 2fr;
@@ -24,7 +24,7 @@
 	}
 }
 
-.secondaryNav.active {
+.secNav.active {
 	background-color: $white;
 	color: #000;
 	position: fixed;
