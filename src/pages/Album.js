@@ -5,7 +5,7 @@ import './Album.scss';
 import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
-import SliderCard from '../components/SliderCard';
+import AlbumSliderCard from '../components/AlbumSliderCard';
 
 export default function Album(props) {
 	var [token] = useContext(TokenContext);
@@ -14,11 +14,13 @@ export default function Album(props) {
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
-	//gemmer alle mine playlist i statet setPlaylists
+	//gemmer alle mine albums i statet setAlbumlists
+
+	//FIXME returns undefined
 	useEffect(
 		function () {
 			axios
-				.get('https://api.spotify.com/v1/albums/', {
+				.get('https://api.spotify.com/v1/albums?ids=61ulfFSmmxMhc2wCdmdMkN', {
 					headers: {
 						Authorization: 'Bearer ' + token.access_token,
 					},
@@ -27,11 +29,11 @@ export default function Album(props) {
 		},
 		[token, setAlbumlists]
 	);
-	console.log(albumlists);
+	console.log('album', albumlists);
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
-	//henter playlist med id'et og dens tracks
+	//henter albums med id'et og dens tracks
 	useEffect(
 		function () {
 			if (props.id)
@@ -46,6 +48,7 @@ export default function Album(props) {
 		},
 		[token, setTracks, props.id]
 	);
+	console.log('tracks', tracks);
 	// ────────────────────────────────────────────────────────────────────────────────
 
 	return (
@@ -56,13 +59,18 @@ export default function Album(props) {
 					<h1 className="album__title">all albums</h1>
 				</div>
 				<article className="album__slider">
-					{albumlists.map(list => (
-						<>
-							<SliderCard key={list.id} list={list} id={list.id} src={list.images[0].url} />
-						</>
-					))}
+					{/* {albumlists.map(list => ( */}
+					{/* <>
+						<AlbumSliderCard
+							key={albumlists.artists.id}
+							list={albumlists}
+							id={albumlists.artists.id}
+							src={albumlists.images.url}
+						/>
+					</> */}
+					{/* ))} */}
 				</article>
-				{tracks.items?.map(({ track }) => (
+				{/* {tracks.items?.map(({ track }) => (
 					<AlbumCard
 						key={track.id}
 						id={track.id}
@@ -70,7 +78,7 @@ export default function Album(props) {
 						title={track.name.slice(0, 18)}
 						duration={track.duration_ms}
 					/>
-				))}
+				))} */}
 			</section>
 			<PrimaryNav />
 		</>
