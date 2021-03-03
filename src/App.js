@@ -17,12 +17,26 @@ Sentry.init({
   dsn:process.env.SENTRY_DSN
 });
 
+function FallbackComponent() {
+  return (
+		<>
+		<div className="notfound">
+			<div>
+				<p>An error has occurred</p>
+				<img src="/img/notfound.svg" alt=""/>
+			</div>		
+		</div>
+	</>
+	);
+};
+
+const myFallback = <FallbackComponent />;
 
 function App() {
 	var tokenState = useState(null);
 	return (
 		<TokenContext.Provider value={tokenState}>
-			<Sentry.ErrorBoundary fallback={"something went wrong"}>
+			<Sentry.ErrorBoundary fallback={myFallback} showDialog>
 				<Router>
 						<>
 							<Callback path="/callback" />

@@ -6,7 +6,7 @@ export default function Login() {
 		response_type: 'code',
 		client_id: '3e05f700a0a849c4bcc15ee82f779723',
 		scope: 'user-read-private user-read-email',
-		redirect_uri: 'http://localhost:8888/callback',
+		redirect_uri: window.location.href.includes("netlify")? 'https://iplaymusic-madshaerup.netlify.app/callback' : 'http://localhost:8888/callback',
 		state: "vdjldfglfdlgrpoiaer9garlogihlgkzhdrlgishlro8tubzpdortuzorihglzdoighlzoirhtlzo8ghldhglzdghlzdoigh"
 	});
 
