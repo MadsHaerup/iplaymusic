@@ -16,7 +16,7 @@ export default function Callback(props) {
 			setToken(response.data);
 			navigate("/featured");
 		});
-	}, [setToken, code]);
+	}, [token, setToken, code]);
 
 	return null;
 }
