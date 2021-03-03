@@ -4,7 +4,9 @@ import TokenContext from "../TokenContext";
 import { navigate } from "@reach/router";
 
 export default function Callback(props) {
-	var [token, setToken] = useContext(TokenContext);
+	// var [token, setToken] = useContext(TokenContext);
+	var tokenState = useContext(TokenContext);
+	var setToken = tokenState[1];
 
 	var code = new URLSearchParams(props.location.search).get("code");
 
@@ -16,7 +18,7 @@ export default function Callback(props) {
 			setToken(response.data);
 			navigate("/featured");
 		});
-	}, [token, setToken, code]);
+	}, [setToken, code]);
 
 	return null;
 }
