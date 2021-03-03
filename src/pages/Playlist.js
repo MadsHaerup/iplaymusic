@@ -18,9 +18,7 @@ export default function Playlist(props) {
 	useEffect(
 		function () {
 			axios
-				.get('https://api.spotify.com/v1/me/playlists', {
-					headers: {
-						Authorization: 'Bearer ' + token.access_token,
+				.get('https://api.spotify.com/v1/me/playlists', {	headers: {		Authorization: 'Bearer ' + token.access_token,
 					},
 				})
 				.then(response => setPlaylists(response.data.items));
@@ -59,7 +57,7 @@ export default function Playlist(props) {
 				<article className="playlist__slider">
 					{playlists.map(list => (
 						<>
-							<SliderCard key={list.id} list={list} id={list.id} src={list.images[0].url} />
+							<SliderCard key={list.id} name={list.name} id={list.id} src={list.images[0].url} />
 						</>
 					))}
 				</article>

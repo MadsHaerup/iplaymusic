@@ -59,18 +59,21 @@ export default function Album(props) {
 					<h1 className="album__title">all albums</h1>
 				</div>
 				<article className="album__slider">
-					{/* {albumlists.map(list => ( */}
-					{/* <>
+
+		
+					{albumlists.map(list => (
+						<>
 						<AlbumSliderCard
-							key={albumlists.artists.id}
-							list={albumlists}
-							id={albumlists.artists.id}
-							src={albumlists.images.url}
-						/>
-					</> */}
-					{/* ))} */}
+							key={list.artists.id}
+							list={list}
+							id={list.artists.id}
+							src={list.images.url}
+							/>
+						</> 
+					))}
+				
 				</article>
-				{/* {tracks.items?.map(({ track }) => (
+				{tracks.items?.map(({ track }) => (
 					<AlbumCard
 						key={track.id}
 						id={track.id}
@@ -78,7 +81,7 @@ export default function Album(props) {
 						title={track.name.slice(0, 18)}
 						duration={track.duration_ms}
 					/>
-				))} */}
+				))}
 			</section>
 			<PrimaryNav />
 		</>

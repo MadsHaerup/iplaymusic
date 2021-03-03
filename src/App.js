@@ -11,15 +11,19 @@ import { useState } from 'react';
 import Callback from './pages/Callback';
 import Player from './pages/Player';
 import Album from './pages/Album';
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+  dsn:process.env.SENTRY_DSN
+});
+
 
 function App() {
 	var tokenState = useState(null);
 	return (
 		<TokenContext.Provider value={tokenState}>
-			<Router>
-				{(function () {
-					// if (tokenState[0]?.access_token)
-					return (
+			<Sentry.ErrorBoundary fallback={"something went wrong"}>
+				<Router>
 						<>
 							<Callback path="/callback" />
 							<Welcome path="/" />
@@ -34,9 +38,8 @@ function App() {
 							<Album path="/albums" />
 							<Album path="/albums/:id" />
 						</>
-					);
-				})()}
-			</Router>
+				</Router>
+			</Sentry.ErrorBoundary>
 		</TokenContext.Provider>
 	);
 }
