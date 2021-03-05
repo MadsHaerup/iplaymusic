@@ -7,7 +7,7 @@ import './Categories.scss';
 export default function Categories() {
 	var [items, setItem] = useState([]);
 	useEffect(function () {
-		fetch('./categories.json')
+		fetch('https://api.spotify.com/v1/browse/categories/party')
 			.then(function (response) {
 				return response.json();
 			})
@@ -24,7 +24,7 @@ export default function Categories() {
 			<section className="categories">
 				<h1 className="categories__title">categories</h1>
 				{items.map(function (item) {
-					return <CategoryCard key={item.category} item={item} />;
+					return <CategoryCard key={item.id} item={item} />;
 				})}
 			</section>
 			<PrimaryNav />

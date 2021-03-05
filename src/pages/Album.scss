@@ -36,11 +36,11 @@
 
 	&__slider {
 		display: flex;
-		justify-content: space-around;
 		overflow-y: scroll;
 		height: 40vh;
 		position: relative;
 		align-items: center;
+		margin-right:1rem;
 
 		a {
 			text-decoration: none;

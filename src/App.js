@@ -11,32 +11,12 @@ import { useState } from 'react';
 import Callback from './pages/Callback';
 import Player from './pages/Player';
 import Album from './pages/Album';
-import * as Sentry from "@sentry/react";
 
-Sentry.init({
-  dsn:process.env.SENTRY_DSN
-});
-
-function FallbackComponent() {
-  return (
-		<>
-		<div className="notfound">
-			<div>
-				<p>An error has occurred</p>
-				<img src="/img/notfound.svg" alt=""/>
-			</div>		
-		</div>
-	</>
-	);
-};
-
-const myFallback = <FallbackComponent />;
 
 function App() {
 	var tokenState = useState(null);
 	return (
 		<TokenContext.Provider value={tokenState}>
-			<Sentry.ErrorBoundary fallback={myFallback} showDialog>
 				<Router>
 						<>
 							<Callback path="/callback" />
@@ -53,7 +33,6 @@ function App() {
 							<Album path="/albums/:id" />
 						</>
 				</Router>
-			</Sentry.ErrorBoundary>
 		</TokenContext.Provider>
 	);
 }

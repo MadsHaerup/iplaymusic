@@ -40,7 +40,9 @@ export default function Playlist(props) {
 						},
 					})
 
-					.then(response => setTracks(response.data));
+					.then(response => {
+						console.log('tracks',response.data)
+						setTracks(response.data)});
 		},
 		[token, setTracks, props.id]
 	);
