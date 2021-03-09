@@ -1,35 +1,46 @@
 import React, { useState, useEffect, useContext } from 'react';
-import AlbumCard from '../components/AlbumCard';
 import PrimaryNav from '../components/PrimaryNav';
 import './Album.scss';
 import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
 import AlbumSliderCard from '../components/AlbumSliderCard';
+// ────────────────────────────────────────────────────────────────────────────────
+import * as Sentry from "@sentry/react";
+import {myFallback} from '../errorBoundaries/SentryErrorBoundary';
+import SongCard from '../components/SongCard';
+import NewReleases from '../components/NewReleases';
+import { Link } from '@reach/router';
+
+Sentry.init({
+  dsn:process.env.SENTRY_DSN
+});
+// ────────────────────────────────────────────────────────────────────────────────
+
 
 export default function Album(props) {
 	var [token] = useContext(TokenContext);
-	var [tracks, setTracks] = useState({});
+	var [tracks, setTracks] = useState([]);
 	var [albumlists, setAlbumlists] = useState([]);
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
 	//gemmer alle mine albums i statet setAlbumlists
-
-	//FIXME returns undefined
+	
 	useEffect(
 		function () {
-			axios
-				.get('https://api.spotify.com/v1/albums?ids=61ulfFSmmxMhc2wCdmdMkN', {
-					headers: {
-						Authorization: 'Bearer ' + token.access_token,
-					},
+			axios.get("https://api.spotify.com/v1/albums?ids=41MnTivkwTO3UUJ8DrqEJJ,6UXCm6bOO4gFlDQZV5yL37,0WzOtZBpXvWdNdH7hCJ4qo", {
+				headers: {
+				"Authorization": "Bearer " + token.access_token
+				},
 				})
-				.then(response => setAlbumlists(response.data.items));
-		},
-		[token, setAlbumlists]
-	);
-	console.log('album', albumlists);
+				.then(response => {
+					console.log('data', response.data.albums)
+					setAlbumlists(response.data.albums);
+				});
+			},
+			[token, setAlbumlists]
+			);
 
 	// ────────────────────────────────────────────────────────────────────────────────
 
@@ -44,7 +55,7 @@ export default function Album(props) {
 						},
 					})
 
-					.then(response => setTracks(response.data));
+					.then(response => setTracks(response.data.items));
 		},
 		[token, setTracks, props.id]
 	);
@@ -58,23 +69,26 @@ export default function Album(props) {
 				<div className="album__header">
 					<h1 className="album__title">all albums</h1>
 				</div>
+
+				<div className="album__FeaturedviewAll">
+					<p className="album__FeaturedviewAll__title">featured albums</p>
+					<Link className="album__FeaturedviewAll__link" to="/albums/viewall">view all</Link>
+				</div>
+				<Sentry.ErrorBoundary fallback={myFallback} showDialog>
+
 				<article className="album__slider">
 
-		
 					{albumlists.map(list => (
-						<>
 						<AlbumSliderCard
-							key={list.artists.id}
-							list={list}
-							id={list.artists.id}
-							src={list.images.url}
+							key={list.id}
+							id={list.id}
+							src={list.images[1].url}
 							/>
-						</> 
-					))}
+					))} 
 				
 				</article>
-				{tracks.items?.map(({ track }) => (
-					<AlbumCard
+				{tracks.map(track => (
+					<SongCard
 						key={track.id}
 						id={track.id}
 						artist={track.artists[0].name}
@@ -82,7 +96,9 @@ export default function Album(props) {
 						duration={track.duration_ms}
 					/>
 				))}
+			</Sentry.ErrorBoundary>
 			</section>
+			<NewReleases/>
 			<PrimaryNav />
 		</>
 	);

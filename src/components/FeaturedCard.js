@@ -8,6 +8,7 @@ export default function FeaturedCard({ item, id, src }) {
 			<p className="featuredCard__description">
 				<Link to={`/playlists/${id}`}>{item.name}</Link>
 			</p>
+			<p className="featuredCard__soundtrack">soundtrack</p>
 		</article>
 	);
 }

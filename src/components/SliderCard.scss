@@ -4,7 +4,8 @@
 	display: grid;
 	grid-template-rows: repeat(12, 1fr);
 	width: 45vw;
-	transform: translate(100px);
+	transform: translate(1rem);
+	margin-right:1rem;
 
 	&__img {
 		border-radius: 10px;

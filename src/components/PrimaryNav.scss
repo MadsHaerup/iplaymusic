@@ -5,6 +5,7 @@
 	width: 100%;
 	background: $white;
 	box-shadow: $navshadow;
+	z-index: 2;
 	&__ul {
 		display: grid;
 		grid-template-columns: repeat(5, auto);
