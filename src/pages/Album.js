@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import AlbumCard from '../components/AlbumCard';
 import PrimaryNav from '../components/PrimaryNav';
 import './Album.scss';
 import SecondaryNav from '../components/SecondaryNav';
@@ -10,6 +9,8 @@ import AlbumSliderCard from '../components/AlbumSliderCard';
 import * as Sentry from "@sentry/react";
 import {myFallback} from '../errorBoundaries/SentryErrorBoundary';
 import SongCard from '../components/SongCard';
+import NewReleases from '../components/NewReleases';
+import { Link } from '@reach/router';
 
 Sentry.init({
   dsn:process.env.SENTRY_DSN
@@ -68,6 +69,11 @@ export default function Album(props) {
 				<div className="album__header">
 					<h1 className="album__title">all albums</h1>
 				</div>
+
+				<div className="album__FeaturedviewAll">
+					<p className="album__FeaturedviewAll__title">featured albums</p>
+					<Link className="album__FeaturedviewAll__link" to="/albums/viewall">view all</Link>
+				</div>
 				<Sentry.ErrorBoundary fallback={myFallback} showDialog>
 
 				<article className="album__slider">
@@ -91,8 +97,8 @@ export default function Album(props) {
 					/>
 				))}
 			</Sentry.ErrorBoundary>
-
 			</section>
+			<NewReleases/>
 			<PrimaryNav />
 		</>
 	);

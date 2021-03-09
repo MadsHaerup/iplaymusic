@@ -1,7 +1,26 @@
 @import 'src/variables.scss';
 .album {
 	display: grid;
-	margin-bottom: 5rem;
+	&__FeaturedviewAll{
+		margin-top:1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-left:1rem;
+		margin-right:1rem;
+
+		&__title, &__link{
+			text-transform: capitalize;
+			margin:0;
+		}
+		&__title{
+			font-weight: 900;
+		}
+		&__link{
+			color: $primaryColor;
+			text-decoration: none;
+		}
+	}
 	&__header {
 		display: grid;
 		img {
@@ -10,7 +29,7 @@
 	}
 	&__title {
 		@include gradientText;
-		margin: 4rem 0 0 2rem;
+		margin: 4rem 0 0 1rem;
 		text-transform: capitalize;
 		font-size: 2rem;
 		grid-area: 1/1/-1/-1;
@@ -37,10 +56,9 @@
 	&__slider {
 		display: flex;
 		overflow-y: scroll;
-		height: 40vh;
+		height: 35vh;
 		position: relative;
 		align-items: center;
-		margin-right:1rem;
 
 		a {
 			text-decoration: none;
