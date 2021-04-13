@@ -69,7 +69,9 @@ export default function Album(props) {
 		<>
 			<SecondaryNav location="Music" icon={<BsSearch/>}/>
 			<section className="album">
-			<Heading heading="All Albums"/>
+				<div style={{marginLeft: "1rem"}}>
+					<Heading heading="All Albums"/>
+				</div>
 
 				<div className="album__FeaturedviewAll">
 					<p className="album__FeaturedviewAll__title">featured albums</p>
