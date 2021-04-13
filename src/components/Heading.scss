@@ -1,0 +1,10 @@
+@import 'src/variables.scss';
+
+.header{
+  margin-top: 3rem;
+  &__title{
+    @include gradientText;
+		text-transform: capitalize;
+		font-size: 2rem;
+  }
+}

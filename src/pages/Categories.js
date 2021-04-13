@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import CategoryCard from '../components/CategoryCard';
+import Heading from '../components/Heading';
 import PrimaryNav from '../components/PrimaryNav';
 import SecondaryNav from '../components/SecondaryNav';
 import './Categories.scss';
+import { BsSearch } from 'react-icons/bs';
+
 
 export default function Categories() {
 	var [items, setItem] = useState([]);
@@ -20,9 +23,10 @@ export default function Categories() {
 
 	return (
 		<>
-			<SecondaryNav />
+			<SecondaryNav location="Categories" icon={<BsSearch/>} />
 			<section className="categories">
-				<h1 className="categories__title">categories</h1>
+				<Heading heading="Categories"/>
+				{/* <h1 className="categories__title">categories</h1> */}
 				{items.map(function (item) {
 					return <CategoryCard key={item.id} item={item} />;
 				})}

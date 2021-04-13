@@ -5,12 +5,15 @@ import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
 import AlbumSliderCard from '../components/AlbumSliderCard';
+import { BsSearch } from 'react-icons/bs';
+
 // ────────────────────────────────────────────────────────────────────────────────
 import * as Sentry from "@sentry/react";
 import {myFallback} from '../errorBoundaries/SentryErrorBoundary';
 import SongCard from '../components/SongCard';
 import NewReleases from '../components/NewReleases';
 import { Link } from '@reach/router';
+import Heading from '../components/Heading';
 
 Sentry.init({
   dsn:process.env.SENTRY_DSN
@@ -64,11 +67,9 @@ export default function Album(props) {
 
 	return (
 		<>
-			<SecondaryNav />
+			<SecondaryNav location="Music" icon={<BsSearch/>}/>
 			<section className="album">
-				<div className="album__header">
-					<h1 className="album__title">all albums</h1>
-				</div>
+			<Heading heading="All Albums"/>
 
 				<div className="album__FeaturedviewAll">
 					<p className="album__FeaturedviewAll__title">featured albums</p>

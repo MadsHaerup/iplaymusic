@@ -1,28 +1,40 @@
 import { IoIosArrowBack } from 'react-icons/io';
-import { BsSearch } from 'react-icons/bs';
-import './SecondaryNav.scss';
-const SecondaryNav = () => {
-	if (window.location.pathname !== '/login') {
-		window.onscroll = function () {
-			navScroll();
-		};
+import React,{useEffect, useState} from 'react';
 
-		function navScroll() {
-			if (document.documentElement.scrollTop > 50) {
-				document.querySelector('.secondaryNav').className = 'secondaryNav active';
-			} else {
-				document.querySelector('.secondaryNav').className = 'secondaryNav';
-			}
-		}
-	}
+import './SecondaryNav.scss';
+
+const SecondaryNav = ({location,icon}) => {
+	const [scrolled, setScrolled]=useState(false);
+
+
+	const handleScroll=() => {
+    const offset=window.scrollY;
+    if(offset > 50 ){
+      setScrolled(true);
+    }
+    else{
+      setScrolled(false);
+    }
+  }
+   
+  useEffect(() => {
+    window.addEventListener('scroll',handleScroll)
+  })
+
+	let navbarClasses=['secondaryNav'];
+  if(scrolled){
+    navbarClasses.push('scrolled');
+  }
+	// ────────────────────────────────────────────────────────────────────────────────
+
 	return (
-		<div className="secondaryNav">
+		<div className={navbarClasses.join(" ")}>
 			<button className="secondaryNav__arrow" onClick={() => window.history.back()}>
 				<IoIosArrowBack />
 			</button>
-			<p className="secondaryNav__text">{window.location.pathname.slice(1, 10)}</p>
+			<p className="secondaryNav__text">{location}</p>
 			<button className="secondaryNav__search">
-				<BsSearch />
+				{icon}
 			</button>
 		</div>
 	);

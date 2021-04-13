@@ -6,6 +6,7 @@ import SecondaryNav from '../components/SecondaryNav';
 import TokenContext from '../TokenContext';
 import axios from 'axios';
 import SliderCard from '../components/SliderCard';
+import { BsSearch } from 'react-icons/bs';
 
 export default function Playlist(props) {
 	var [token] = useContext(TokenContext);
@@ -50,7 +51,7 @@ export default function Playlist(props) {
 
 	return (
 		<>
-			<SecondaryNav />
+			<SecondaryNav location="playlists" icon={<BsSearch/>} />
 			<section className="playlist">
 				<div className="playlist__header">
 					<img src="/img/playlist.svg" alt="" className="playlist__background" />

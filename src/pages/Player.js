@@ -3,7 +3,7 @@ import PlayerCard from '../components/PlayerCard';
 import '../components/PlayerCard.scss';
 import axios from 'axios';
 import TokenContext from '../TokenContext';
-import SecNav from '../components/SecNav';
+import SecondaryNav from '../components/SecondaryNav';
 
 export default function Playlist(props) {
 	var [token] = useContext(TokenContext);
@@ -30,7 +30,7 @@ export default function Playlist(props) {
 
 	return (
 		<>
-			<SecNav />
+			<SecondaryNav location="Player" />
 			<section className="player">
 				<PlayerCard
 					key={tracks.id}

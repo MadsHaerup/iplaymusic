@@ -4,6 +4,8 @@ import PrimaryNav from '../components/PrimaryNav';
 import axios from 'axios';
 import TokenContext from '../TokenContext';
 import SecondaryNav from '../components/SecondaryNav';
+import Heading from '../components/Heading';
+import { BsSearch } from 'react-icons/bs';
 
 export default function Featured() {
 	var [token] = useContext(TokenContext);
@@ -27,9 +29,9 @@ export default function Featured() {
 
 	return (
 		<>
-			<SecondaryNav />
+			<SecondaryNav location="Featured" icon={<BsSearch/>}/>
 			<section className="featured">
-				<h1 className="featured__title">featured</h1>
+				<Heading heading="featured"/>
 
 				{content.playlists &&
 					content.playlists.items.map(function (item) {
